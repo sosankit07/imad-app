@@ -25,6 +25,11 @@ app.get('/two', function (req, res) {
 app.get('/three', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'three.html'));
 });
+var counter = 0;
+app.get('/counter', function (req, res) {
+  counter = counter + 1;
+  res.send(counter);
+});
 
 
 // Do not change port, otherwise your app won't run on IMAD servers
