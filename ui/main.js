@@ -1,5 +1,5 @@
 var button = document.getElementById("counter");
-button.click=function(){
+button.onclick=function(){
     //create a request
     var request=new XMLHttpRequest();
     request.onreadystatechange = function(){
@@ -13,6 +13,6 @@ button.click=function(){
         
     };
     //make a request
-    request.open("GET","http://dubeankit07.imad.hasura-app.io/counter/",true);
+    request.open("GET","http://dubeankit07.imad.hasura-app.io/counter",true);
     request.send(null);
 };
