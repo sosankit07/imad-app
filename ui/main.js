@@ -1,4 +1,4 @@
-console.log("Loaded")
+console.log("Loaded");
 var button = document.getElementById("counter");
 button.onclick=function(){
     //create a request
