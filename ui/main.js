@@ -22,7 +22,7 @@ var nameInput=document.getElementById("names");
 var name=nameInput.value;
 var submit=document.getElementById("submit");
 submit.onclick=function(){
-  /*var request=new XMLHttpRequest();
+  var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
     if(request.readyState===XMLHttpRequest.DONE)
     {
@@ -31,9 +31,9 @@ request.onreadystatechange=function(){
             var list=document.getElementById("unlist");
             list.innerHTML=counter.toString();
         }
-    }*/
+    }
     var names[];
-    var list;
+    var list=' ';
     for(var i=0;i<names.length;i++){
         list='<li>'+names[i]+'</li>';
     }
