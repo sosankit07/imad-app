@@ -1,5 +1,5 @@
 console.log("Loaded");
-var button = document.getElementById("counter");
+/*var button = document.getElementById("counter");
 button.onclick=function(){
     //create a request
     var request=new XMLHttpRequest();
@@ -16,4 +16,4 @@ button.onclick=function(){
     //make a request
     request.open("GET","http://dubeankit07.imad.hasura-app.io/counter",true);
     request.send(null);
-};
+};*/
