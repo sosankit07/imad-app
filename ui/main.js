@@ -15,6 +15,6 @@ request.onreadystatechange=function(){
     }
 };
 
-request.open('GET','http://http://dubeankit07.imad.hasura-app.io/counter',true);
+request.open('GET','http://dubeankit07.imad.hasura-app.io/counter',true);
 request.send(null);
 };
