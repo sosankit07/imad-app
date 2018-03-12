@@ -2,7 +2,7 @@ console.log("Loaded");
 var button=document.getElementById("counter");
 
 button.onclick=function(){
-//making request
+//create a request
 var request=new XMLHttpRequest();
 request.onreadystatechange=function(){
     if(request.readyState===XMLHttpRequest.DONE)
@@ -14,7 +14,7 @@ request.onreadystatechange=function(){
         }
     }
 };
-//creating a request
+//make a request
 request.open('GET','http://dubeankit07.imad.hasura-app.io/counter',true);
 request.send(null);
 };
@@ -27,17 +27,19 @@ request.onreadystatechange=function(){
     if(request.readyState===XMLHttpRequest.DONE)
     {
         if(request.status===200){
-            var = request.responseText;
-            var list=document.getElementById("unlist");
-            list.innerHTML=counter.toString();
+         var names=[];
+            var list=' ';
+          for(var i=0;i<names.length;i++){
+            list='<li>'+names[i]+'</li>';
+            }
+            var ul=document.getElementById("unlist");
+            ul.innerHTML=list;
         }
     }
-    var names[];
-    var list=' ';
-    for(var i=0;i<names.length;i++){
-        list='<li>'+names[i]+'</li>';
-    }
-    var ul=document.getElementById("unlist");
-    ul.innerHTML=list;
+};
+//make a request
+request.open('GET','http://dubeankit07.imad.hasura-app.io/submit-name'+name,true);
+request.send(null);
+    
     
 };
