@@ -8,6 +8,48 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
+var articleOne={
+    title : 'Article One | Ankit Dubey',
+    heading : 'Article One',
+    date : '8 Oct 2017',
+    content : `This is article one.This is article one.This is article one.This is article one.`
+};
+function createTemplate(data){
+var title=data.title;
+var heading=data.heading;
+var date=data.date;
+var content=data.content;
+var HTMLTemplate=
+`<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            ${title}
+        </title>
+        <meta name="viewport" content="width=device-width, intial-scale=1"/>
+        <link href="/ui/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+        <a href="\">Home</a>
+        <hr>
+       
+       <div>
+            ${content}
+        </div>
+        <h3>
+            ${heading}
+        </h3>
+        <div>
+            ${date}
+        </div>
+        </div>
+    </body>
+</html>`;
+return HTMLTemplate;
+}
+
+
 var counter = 0;
 app.get('/counter', function (req, res) {
   counter = counter + 1;
@@ -25,7 +67,7 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 app.get('/one', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'one.html'));
+  res.send(createTemplate(articleOne));
 });
 app.get('/two', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'two.html'));
