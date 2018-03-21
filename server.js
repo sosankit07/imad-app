@@ -5,10 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
-/*var articles = {
+
+var articles = {
 "one":{
     title : 'Article One | Ankit Dubey',
     heading : 'Article One',
@@ -37,7 +35,7 @@ var heading=data.heading;
 var date=data.date;
 var content=data.content;
 var HTMLTemplate=
-`<!DOCTYPE html>
+`
 <html>
     <head>
         <title>
@@ -49,7 +47,7 @@ var HTMLTemplate=
     <body>
         <div class="container">
         <a href="\">Home</a>
-        <hr>
+        <hr/>
        
        <div>
             ${content}
@@ -64,9 +62,11 @@ var HTMLTemplate=
     </body>
 </html>`;
 return HTMLTemplate;
-}*/
+}
 
-
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
 var counter = 0;
 app.get('/counter', function (req, res) {
   counter = counter + 1;
