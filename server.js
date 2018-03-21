@@ -82,7 +82,6 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 app.get('/articles/:articlename', function (req, res) {
-    var articlename=req.params.articlename;
     pool.query("SELECT * FROM articles WHERE title = $1",[req.params.articlename],function(err,result){
         if(err){
             res.status(500).send(err.toString());
