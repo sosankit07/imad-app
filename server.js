@@ -14,29 +14,6 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articles = {
-"one":{
-    title : 'Article One | Ankit Dubey',
-    heading : 'Article One',
-    date : '8 Oct 2017',
-    content : `This is article one.This is article one.This is article one.This is article one.`
-},
-"two":{
-    title : 'Article One | Ankit Dubey',
-    heading : 'Article One',
-    date : '8 Oct 2017',
-    content : `This is article one.This is article one.This is article one.This is article one.`
-    
-},
-"three":{
-    title : 'Article One | Ankit Dubey',
-    heading : 'Article One',
-    date : '8 Oct 2017',
-    content : `This is article one.This is article one.This is article one.This is article one.`
-
-}
-    
-};
 function createTemplate(data){
 var title=data.title;
 var heading=data.heading;
@@ -104,9 +81,21 @@ app.get('/ui/madi.png', function (req, res) {
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
-app.get('/:articlename', function (req, res) {
+app.get('/articles/:articlename', function (req, res) {
     var articlename=req.params.articlename;
-  res.send(createTemplate(articles[articlename]));
+    pool.query("SELECT * FROM articles WHERE title = $1",[req.params.articlename],function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }else{
+            if(result.rows.length === 0){
+                res.status(404).send('Article Not Found');
+            }else{
+                var articleData = result.rows[0];
+                res.send(createTemplate(articles[articlename]));
+            }
+        }
+    });
+  
 });
 var names=[];
 app.get('/submit-name/:name', function (req, res) {
