@@ -8,7 +8,7 @@ app.use(morgan('combined'));
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-var articles = {
+/*var articles = {
 "one":{
     title : 'Article One | Ankit Dubey',
     heading : 'Article One',
@@ -64,7 +64,7 @@ var HTMLTemplate=
     </body>
 </html>`;
 return HTMLTemplate;
-}
+}*/
 
 
 var counter = 0;
