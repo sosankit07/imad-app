@@ -9,7 +9,7 @@ app.get('/', function (req, res) {
 var config = {
     user: 'dubeankit07',
     database: 'dubeankit07',
-    host: 'db.imad.hasura-app.io/database.php',
+    host: 'db.imad.hasura-app.io',
     port:'5432',
     password: process.env.DB_PASSWORD
 };
@@ -52,7 +52,7 @@ return HTMLTemplate;
 }
 
 
-var pool = new Pool(config);
+var pool = new POOL(config);
 app.get('/test-db',function(req,res){
    //make a select request
    //return a response with results
