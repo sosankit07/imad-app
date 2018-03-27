@@ -81,8 +81,9 @@ app.get('/ui/madi.png', function (req, res) {
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
+var pool1=new Pool(config);
 app.get('/articles/:articlename', function (req, res) {
-    pool.query("SELECT * FROM articles WHERE title = $1",[req.params.articlename],function(err,result){
+    pool1.query("SELECT * FROM articles WHERE title = $1",[req.params.articlename],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
