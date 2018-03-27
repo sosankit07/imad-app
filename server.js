@@ -3,6 +3,9 @@ var morgan = require('morgan');
 var path = require('path');
 var POOL = require('pg').Pool;
 
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
 var config = {
     user: 'dubeankit07',
     database: 'dubeankit07',
@@ -13,9 +16,6 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
 function createTemplate(data){
 var title=data.title;
 var heading=data.heading;
