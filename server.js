@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
-//var crypto=require('crypto');
+var crypto=require('crypto');
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
@@ -17,14 +17,14 @@ var config = {
 var app = express();
 app.use(morgan('combined'));
 
-/*function hash(input,salt){
+function hash(input,salt){
     var hashed = crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return(hashed.toString("hex"));
 }
 app.get('/hash/:input',function(req,res){
    var hashedstring=hash(req.params.input,'this-is-some-random-string');
    res.send(hashedstring);
-});*/
+});
 
 function createTemplate(data){
 var title=data.title;
@@ -66,7 +66,7 @@ var pool = new Pool(config);
 app.get('/test-db',function(req,res){
    //make a select request
    //return a response with results
-   pool.query('SELECT * FROM "test"',function(err,result){
+   pool.query('SELECT * FROM test',function(err,result){
        if(err){
            res.status(500).send(err.toString());
        }else{
@@ -92,7 +92,7 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 app.get('/articles/:articlename', function (req, res) {
-    pool.query('SELECT * FROM "articles" WHERE "title" = $1',[req.params.articlename],function(err,result){
+    pool.query('SELECT * FROM articles WHERE title= $1',[req.params.articlename],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
