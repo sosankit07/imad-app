@@ -4,9 +4,7 @@ var path = require('path');
 var Pool = require('pg').Pool;
 var crypto=require('crypto');
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
-});
+
 var config = {
     user: '<dubeankit07>',
     database: '<dubeankit07>',
@@ -24,6 +22,9 @@ function hash(input,salt){
 app.get('/hash/:input',function(req,res){
    var hashedstring=hash(req.params.input,'this-is-some-random-string');
    res.send(hashedstring);
+});
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 function createTemplate(data){
