@@ -66,7 +66,7 @@ var pool = new Pool(config);
 app.get('/test-db',function(req,res){
    //make a select request
    //return a response with results
-   pool.query('SELECT * FROM test',function(err,result){
+   pool.query('SELECT * FROM "test"',function(err,result){
        if(err){
            res.status(500).send(err.toString());
        }else{
@@ -92,7 +92,7 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 app.get('/articles/:articlename', function (req, res) {
-    pool.query('SELECT * FROM articles WHERE title = $1',[req.params.articlename],function(err,result){
+    pool.query('SELECT * FROM "articles" WHERE "title" = $1',[req.params.articlename],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }else{
