@@ -1,7 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-var Pool = require('pg').Pool;
+//var Pool = require('pg').Pool;
 var crypto=require('crypto');
 
 app.get('/', function (req, res) {
@@ -62,7 +62,7 @@ return HTMLTemplate;
 }
 
 
-var pool = new Pool(config);
+//var pool = new Pool(config);
 /*app.get('/test-db',function(req,res){
    //make a select request
    //return a response with results
