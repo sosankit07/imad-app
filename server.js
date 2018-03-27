@@ -63,7 +63,7 @@ return HTMLTemplate;
 
 
 var pool = new Pool(config);
-app.get('/test-db',function(req,res){
+/*app.get('/test-db',function(req,res){
    //make a select request
    //return a response with results
    pool.query('SELECT * FROM test',function(err,result){
@@ -73,7 +73,7 @@ app.get('/test-db',function(req,res){
            res.send(JSON.stringify(result.rows));
        }
    });
-});
+});*/
 
 var counter = 0;
 app.get('/counter', function (req, res) {
